@@ -1,52 +1,28 @@
-/* Calendar */
-function calendar(newYear, newMonth) {
-  //
-  const startOfMonth = new Date(newYear, newMonth - 1, 1);
-  // const timeLength = 32 - new Date(newYear, newMonth - 1, 32).getDate();
-  const endOfMonth = new Date(newYear, newMonth, 0).getDate();
+import Calendar from './calendar.js';
 
-  let year = startOfMonth.getFullYear(),
-    month = startOfMonth.getMonth(),
-    date = startOfMonth.getDate(),
-    day = startOfMonth.getDay();
+let year = new Date().getFullYear();
+let month = new Date().getMonth() + 1;
 
-  const captionYear = document.querySelector('.year'),
-    captionMonth = document.querySelector('.month'),
-    $time = document.querySelector('time'),
-    days = document.querySelectorAll('tr td');
+let calendar = new Calendar(year, month);
 
-  /* 초기 입력값 - td의 레이아웃을 유지시키기 위해 사용 */
-  for (let i = 0; i < days.length; i++) {
-    // &nbsp;는 HTML로 인식되는 공백 특수기호이므로 innerHTML을 이용함
-    days[i].innerHTML = '&nbsp;';
-  }
+const captionYear = document.querySelector('.year');
+const captionMonth = document.querySelector('.month');
+const $time = document.querySelector('time');
+const days = document.querySelectorAll('tr td');
 
-  for (let i = day; i < day + endOfMonth; i++) {
-    // days[i].textContent = date++;
+calendar.makeCalendar($time, captionYear, captionMonth, days);
 
-    days[i].innerHTML = `
-      <button type="button" class="modal-btn">${date}</button>
-    `;
-    date++;
-  }
+const calenderBtns = document.querySelectorAll('.calendarBtn');
 
-  captionYear.textContent = year;
-  captionMonth.textContent = month + 1;
-  $time.dateTime = `${year}-${month + 1}`;
-}
-
-let year = new Date().getFullYear(),
-  month = new Date().getMonth() + 1;
-
-calendar(year, month);
-
-const btnCalender = document.querySelectorAll('calendarBtn');
-
-btnCalender.forEach((item) => {
-  item.addEventListener('click', () => {
-    item.classList.contains('prev')
-      ? calendar(year, --month)
-      : calendar(year, ++month);
+calenderBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('prev')) {
+      calendar = new Calendar(year, --month);
+      calendar.makeCalendar($time, captionYear, captionMonth, days);
+    } else {
+      calendar = new Calendar(year, ++month);
+      calendar.makeCalendar($time, captionYear, captionMonth, days);
+    }
   });
 });
 
