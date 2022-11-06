@@ -1,0 +1,110 @@
+body {
+  background: rgba(73, 166, 233, 0.5);
+}
+
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+#calendar {
+  padding: 20px;
+  background-color: #fff;
+  text-align: center;
+  color: #333;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+caption {
+  font-size: 25px;
+  color: orange;
+  margin: 10px;
+}
+
+th,
+td {
+  width: 30px;
+  padding: 10px;
+  border: 1px solid #666;
+}
+
+th:first-child,
+td:first-child {
+  color: red;
+}
+
+.prev,
+.next {
+  color: inherit;
+  padding: 10px;
+  margin: 5px;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.modal-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  transition: all 0.3s linear;
+  /* visibility: hidden; */
+  /* z-index: -10; */
+  visibility: visible;
+  z-index: 10;
+}
+
+/* OPEN/CLOSE MODAL */
+.open-modal {
+  visibility: visible;
+  z-index: 10;
+}
+
+.modal-container {
+  background: #fff;
+  border-radius: 0.5rem;
+  width: 90vw;
+  height: 30vh;
+  max-width: 620px;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: transparent;
+  border-color: transparent;
+  color: hsl(360, 67%, 44%);
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.close-btn:hover {
+  color: hsl(360, 71%, 66%);
+  transform: scale(1.3);
+}

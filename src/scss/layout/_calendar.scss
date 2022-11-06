@@ -1,0 +1,44 @@
+#calendar {
+  padding: 20px;
+  text-align: center;
+  color: #333;
+}
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+caption {
+  font-size: 25px;
+  color: orange;
+  margin: 10px;
+}
+
+th,
+td {
+  width: 30px;
+  padding: 10px;
+  border: 1px solid #666;
+}
+
+th:first-child,
+td:first-child {
+  color: red;
+}
+
+.prev,
+.next {
+  color: inherit;
+  padding: 10px;
+  margin: 5px;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.modal-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
